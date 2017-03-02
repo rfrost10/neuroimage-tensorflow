@@ -4,7 +4,7 @@ import nibabel as nib
 import os
 
 # test dataset
-data_dir = '/home/paul/cmet/brainhack/neuroimage-tensorflow/bucker40/'
+data_dir = '/Users/rob/Documents/OnlineCourses/brainhack/neuroimage-tensorflow/buckner40'
 
 #filename_pairs = [os.path.join(data_dir,'114/norm.nii.gz'),os.path.join(data_dir,'144/aseg.nii.gz'),
 #                 os.path.join(data_dir,'091/norm.nii.gz'),os.path.join(data_dir,'091/aseg.nii.gz'),
@@ -88,7 +88,7 @@ for string_record in record_iterator:
 	img_1d = np.fromstring(image_raw, dtype=np.uint8)
 	reconstructed_img = img_1d.reshape((x_dim, y_dim, z_dim))
     
-	label_1d = np.fromstring(label_raw, dtype=np.uint8)
+	label_1d = np.fromstring(label_raw, dtype=np.uint32)
 	reconstructed_label = label_1d.reshape((x_dim, y_dim, z_dim))
     
 	reconstructed_images.append((reconstructed_img, reconstructed_label))
@@ -97,20 +97,10 @@ for string_record in record_iterator:
 # Let's check if the reconstructed images match
 # the original images
 
-#for original_pair, reconstructed_pair in zip(original_images, reconstructed_images):
-#    
-#    img_pair_to_compare, annotation_pair_to_compare = zip(original_pair,
-#                                                          reconstructed_pair)
-#    print(np.allclose(*img_pair_to_compare))
-#    print(np.allclose(*annotation_pair_to_compare))
-
-
-
-
-
-
-
-
-
-
+for original_pair, reconstructed_pair in zip(original_images, reconstructed_images):
+    
+    img_pair_to_compare, annotation_pair_to_compare = zip(original_pair,
+                                                          reconstructed_pair)
+    print(np.allclose(*img_pair_to_compare))
+    print(np.allclose(*annotation_pair_to_compare))
 
