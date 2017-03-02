@@ -1,0 +1,12 @@
+# installing tensorflow
+https://www.tensorflow.org/install/install_mac
+
+# open tensorflow environment
+source activate tensorflow
+
+# either:
+# 1) open ipython notebook
+jupyter notebook
+
+# 2) run python scripts
+python test.py
